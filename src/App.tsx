@@ -1,7 +1,5 @@
+import Layout from './shared/components/layout';
+
 export default function App() {
-  return (
-    <>
-      <h1>Rick and Morty</h1>
-    </>
-  );
+  return <Layout>12</Layout>;
 }
