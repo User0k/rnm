@@ -1,0 +1,48 @@
+.loader__wrapper {
+  padding: 30px 0;
+}
+
+.loader-large {
+  height: 465px;
+  width: 475px;
+}
+
+.loader-small {
+  height: 103px;
+  width: 101px;
+}
+
+.loader-large,
+.loader-small {
+  animation:
+    spin 3.5s linear infinite,
+    fade 5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scaleY(0.9) rotate(180deg);
+  }
+
+  100% {
+    transform: scaleY(1) rotate(360deg);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
