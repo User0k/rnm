@@ -4,13 +4,9 @@ header {
   padding: 5px 12px;
 
   & button {
-    display: flex;
-    align-items: center;
     padding: 6px 6px;
-    background-color: transparent;
     border: 1px solid #393939;
     border-radius: 12px;
-    cursor: pointer;
   }
 }
 
@@ -18,10 +14,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .header__logo {
-  fill: black;
+  fill: var(---color-dark-black);
 }
 
 .header__button-group {
@@ -48,6 +45,7 @@ header {
       border-color: var(--color-white);
     }
   }
+
   .header__logo {
     fill: var(--color-white);
   }

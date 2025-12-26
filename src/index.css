@@ -35,18 +35,25 @@ a {
 }
 
 main {
+  display: flex;
   flex-grow: 1;
+  position: relative;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .container-large {
   max-width: 1044px;
-  width: 100%;
   margin: auto;
 }
 
 .container-medium {
   max-width: 1022px;
-  width: 100%;
   margin: auto;
 }
 
