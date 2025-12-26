@@ -1,5 +1,5 @@
-import Layout from './shared/components/layout';
+import CharacterList from './pages/character-list';
 
 export default function App() {
-  return <Layout>12</Layout>;
+  return <CharacterList />;
 }
