@@ -1,5 +1,5 @@
-import HeaderLogo from '../../../assets/icons/rm-icon.svg?react';
-import SunIcon from '../../../assets/icons/sun.svg?react';
+import { HeaderLogo } from '../../../assets/icons';
+import { SunIcon } from '../../../assets/icons';
 import './header.css';
 
 function Header() {

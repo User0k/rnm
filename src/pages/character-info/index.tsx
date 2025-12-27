@@ -1,5 +1,5 @@
 import Layout from '../../shared/components/layout';
-import ArrowIcon from '../../assets/icons/arrow_back.svg?react';
+import { ArrowIcon } from '../../assets/icons';
 import Loader from '../../shared/components/loader';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
@@ -21,7 +21,7 @@ function CharacterInfo() {
           onClick={handleGoBack}
         >
           <ArrowIcon />
-          <h3>go back</h3>
+          <span className='typography-h3'>go back</span>
         </button>
       </div>
       <div className='container-medium'>

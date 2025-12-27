@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer>
       <div className='container-medium'>
-        <h3>Made with love by @user0k</h3>
+        <p className='typography-h3'>Made with love by @user0k</p>
       </div>
     </footer>
   );

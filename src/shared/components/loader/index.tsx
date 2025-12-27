@@ -18,7 +18,7 @@ function Loader({ size = 'large', label }: LoaderProps) {
         className={spinnerClassName}
         alt='Animated spinner as a portal from Rick and Morty'
       />
-      {label && <h3>{label}</h3>}
+      {label && <p className='typography-h3'>{label}</p>}
     </div>
   );
 }

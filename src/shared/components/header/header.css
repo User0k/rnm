@@ -18,7 +18,7 @@ header {
 }
 
 .header__logo {
-  fill: var(---color-dark-black);
+  fill: var(--color-dark-black);
 }
 
 .header__button-group {
@@ -32,21 +32,4 @@ header {
   font-size: 25px;
   line-height: 21px;
   letter-spacing: 0.25px;
-}
-
-@media (prefers-color-scheme: dark) {
-  header {
-    background-color: var(--color-black);
-
-    & button {
-      background-color: var(--color-dark-gray);
-      color: var(--color-light-gray);
-      fill: var(--color-light-gray);
-      border-color: var(--color-white);
-    }
-  }
-
-  .header__logo {
-    fill: var(--color-white);
-  }
 }

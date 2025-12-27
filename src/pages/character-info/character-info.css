@@ -10,7 +10,7 @@
   border: none;
 
   & svg {
-    fill: var(---color-dark-black);
+    fill: var(--color-dark-black);
   }
 }
 
@@ -19,10 +19,4 @@
   position: absolute;
   width: 100%;
   top: 44px;
-}
-
-@media (prefers-color-scheme: dark) {
-  .character-info__button-back svg {
-    fill: var(--color-white);
-  }
 }
