@@ -1,11 +1,14 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  --color-dark-black: #000000;
+  --color-black: #212121;
+  --color-white: #ffffff;
+  --color-dark-gray: #3c3c3c;
+  --color-light-gray: #cacaca;
+
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--color-black);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,21 +16,49 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
   text-decoration: inherit;
 }
 
-body {
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+#root {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+main {
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.container-large {
+  max-width: 1044px;
+  margin: auto;
+}
+
+.container-medium {
+  max-width: 1022px;
+  margin: auto;
+}
+
+.typography-h3 {
+  font-family: 'Karla', 'Roboto', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
 }

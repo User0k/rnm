@@ -1,0 +1,8 @@
+.character-info {
+  justify-items: center;
+}
+
+.character-info__logo {
+  width: 600px;
+  height: 200px;
+}

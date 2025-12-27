@@ -1,0 +1,22 @@
+.character-info {
+  position: relative;
+  height: 100%;
+}
+
+.character-info__button-back {
+  column-gap: 16px;
+  text-transform: uppercase;
+  color: var(--color-dark-black);
+  border: none;
+
+  & svg {
+    fill: var(--color-dark-black);
+  }
+}
+
+.character-info__button-wrapper {
+  justify-self: anchor-center;
+  position: absolute;
+  width: 100%;
+  top: 44px;
+}

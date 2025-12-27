@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  align-items: center;
+  padding: 5px 12px;
+
+  & button {
+    padding: 6px 6px;
+    border: 1px solid #393939;
+    border-radius: 12px;
+  }
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header__logo {
+  fill: var(--color-dark-black);
+}
+
+.header__button-group {
+  display: flex;
+  column-gap: 15px;
+  height: fit-content;
+}
+
+.header__button-lang-switcher {
+  padding: 2px;
+  font-size: 25px;
+  line-height: 21px;
+  letter-spacing: 0.25px;
+}
