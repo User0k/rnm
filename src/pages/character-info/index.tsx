@@ -1,8 +1,11 @@
-import Layout from '../../shared/components/layout';
-import { ArrowIcon } from '../../assets/icons';
-import Loader from '../../shared/components/loader';
-import { useNavigate } from 'react-router';
 import { useState } from 'react';
+
+import { useNavigate } from 'react-router';
+
+import { ArrowIcon } from '../../assets/icons';
+import Layout from '../../shared/components/layout';
+import Loader from '../../shared/components/loader';
+
 import './character-info.css';
 
 function CharacterInfo() {

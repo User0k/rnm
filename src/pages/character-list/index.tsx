@@ -1,7 +1,9 @@
+import { useState } from 'react';
+
+import logoImage from '../../assets/images/logo.png';
 import Layout from '../../shared/components/layout';
 import Loader from '../../shared/components/loader';
-import logoImage from '../../assets/images/logo.png';
-import { useState } from 'react';
+
 import './character-list.css';
 
 function CharacterList() {

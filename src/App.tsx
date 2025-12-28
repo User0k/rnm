@@ -1,6 +1,7 @@
+import { Route, Routes } from 'react-router';
+
 import CharacterInfo from './pages/character-info';
 import CharacterList from './pages/character-list';
-import { Routes, Route } from 'react-router';
 
 export default function App() {
   return (

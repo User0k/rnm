@@ -1,5 +1,8 @@
-import SpinnerLarge from '../../../assets/images/spinner_large.png';
-import SpinnerSmall from '../../../assets/images/spinner_large.png';
+import {
+  default as SpinnerLarge,
+  default as SpinnerSmall,
+} from '../../../assets/images/spinner_large.png';
+
 import './loader.css';
 
 interface LoaderProps {
