@@ -3,6 +3,7 @@
   --color-black: #212121;
   --color-white: #ffffff;
   --color-dark-gray: #3c3c3c;
+  --color-mid-gray: #757575;
   --color-light-gray: #cacaca;
 
   font-family: 'Roboto', Helvetica, Arial, sans-serif;
@@ -44,11 +45,16 @@ button {
   align-items: center;
   background-color: transparent;
   cursor: pointer;
+  border: none;
+}
+
+ul {
+  list-style: none;
 }
 
 .container-large {
   max-width: 1044px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 .container-medium {

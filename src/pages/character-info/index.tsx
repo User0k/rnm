@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router';
 
-import { ArrowIcon } from '../../assets/icons';
+import { ArrowBackIcon } from '../../assets/icons';
 import Layout from '../../shared/components/layout';
 import Loader from '../../shared/components/loader';
 
@@ -23,7 +23,7 @@ function CharacterInfo() {
           className='character-info__button-back'
           onClick={handleGoBack}
         >
-          <ArrowIcon />
+          <ArrowBackIcon />
           <span className='typography-h3'>go back</span>
         </button>
       </div>
