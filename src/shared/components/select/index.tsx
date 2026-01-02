@@ -9,13 +9,13 @@ import './select.css';
 interface OptionProps<T> {
   label: ReactNode;
   value: T;
+  labelComponent?: ReactNode;
 }
 
 interface SelectProps<T> extends Omit<
   HTMLAttributes<HTMLDivElement>,
-  'defaultValue' | 'onChange'
+  'onChange'
 > {
-  defaultValue?: T;
   disabled?: boolean;
   onChange?: (value: T) => void;
   options?: OptionProps<T>[];
@@ -26,7 +26,6 @@ interface SelectProps<T> extends Omit<
 
 export default function Select<T>({
   className = '',
-  defaultValue,
   disabled = false,
   onChange,
   options = [],
@@ -36,7 +35,6 @@ export default function Select<T>({
   ...props
 }: SelectProps<T>) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(defaultValue);
   const selectRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -57,16 +55,15 @@ export default function Select<T>({
     }
   }, [isOpen]);
 
-  const selectedOption = options.find((opt) => opt.value === selectedValue);
+  const currentOption = options.find((opt) => opt.value === value);
+  const placeholderOption = options.find((opt) => opt.label === placeholder);
 
   const selectClassName = `select-${size} ${className}`.trim();
   const placeholderClassName = `select__placeholder${disabled ? ' select__placeholder_disabled ' : ''}`;
   const arrowClassName = `select__arrow${isOpen ? ' select__arrow_open' : ''}`;
 
   const getOptionClassName = (option: OptionProps<T>) =>
-    `select__option${
-      option.value === selectedValue ? ' select__option_selected' : ''
-    }`;
+    `select__option${option.value === value ? ' select__option_selected' : ''}`;
 
   const toggleDropdown = () => {
     if (!disabled) {
@@ -75,28 +72,10 @@ export default function Select<T>({
   };
 
   const handleOptionClick = (optionValue: T) => {
-    setSelectedValue(optionValue);
-
     if (onChange) {
       onChange(optionValue);
     }
-
     setIsOpen(false);
-  };
-
-  const getLabel = () => {
-    if (selectedOption) {
-      return selectedOption.label;
-    }
-
-    if (value !== undefined) {
-      const valueOption = options.find((option) => option.value === value);
-      if (valueOption) {
-        return valueOption.label;
-      }
-    }
-
-    return placeholder;
   };
 
   return (
@@ -109,7 +88,10 @@ export default function Select<T>({
         className={placeholderClassName}
         onClick={toggleDropdown}
       >
-        <span className='select__value'>{getLabel()}</span>
+        <p className='select__value'>
+          {currentOption?.label ?? placeholder}
+          {currentOption?.labelComponent ?? placeholderOption?.labelComponent}
+        </p>
         <ArrowDownIcon className={arrowClassName} />
       </button>
 
@@ -122,6 +104,7 @@ export default function Select<T>({
               onClick={() => handleOptionClick(option.value)}
             >
               {option.label}
+              {option.labelComponent}
             </li>
           ))}
         </ul>

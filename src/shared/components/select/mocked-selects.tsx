@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import Select from '.';
+import StatusDot, { type Status } from '../status-dot';
 
 export function MockedSelectLarge() {
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+    undefined,
+  );
+
   return (
     <Select
+      value={selectedValue}
+      onChange={setSelectedValue}
       options={[
         { label: 'Human', value: 'human' },
         { label: 'Alien', value: 'alien' },
@@ -16,32 +24,24 @@ export function MockedSelectLarge() {
 }
 
 export function MockedSelectSmall() {
-  const colors = ['#12B800', '#DF0000', '#FF9900'];
+  const [selectedValue, setSelectedValue] = useState<string | undefined>(
+    undefined,
+  );
 
   const options = [
-    { label: 'Alive', value: 'alive' },
-    { label: 'Dead', value: 'dead' },
-    { label: 'Unknown', value: 'unknown' },
-  ].map((option, i) => ({
+    { label: 'Alive', value: 'alive' as Status },
+    { label: 'Dead', value: 'dead' as Status },
+    { label: 'Unknown', value: 'unknown' as Status },
+  ].map((option) => ({
     value: option.value,
-    label: (
-      <p style={{ display: 'flex', alignItems: 'center', columnGap: 8 }}>
-        {option.label}
-        <span
-          style={{
-            width: 10,
-            height: 10,
-            marginLeft: 2,
-            borderRadius: '100%',
-            backgroundColor: colors[i],
-          }}
-        ></span>
-      </p>
-    ),
+    label: option.label,
+    labelComponent: <StatusDot status={option.value} />,
   }));
 
   return (
     <Select
+      value={selectedValue}
+      onChange={setSelectedValue}
       options={options}
       placeholder={options[0].label}
       size='small'
