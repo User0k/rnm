@@ -1,5 +1,5 @@
-import { HeaderLogo } from '../../../assets/icons';
-import { SunIcon } from '../../../assets/icons';
+import { HeaderLogo, SunIcon } from '../../../assets/icons';
+
 import './header.css';
 
 function Header() {

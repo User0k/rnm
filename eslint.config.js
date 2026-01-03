@@ -1,10 +1,11 @@
 import js from '@eslint/js';
-import globals from 'globals';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import tseslint from 'typescript-eslint';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import { defineConfig, globalIgnores } from 'eslint/config';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -13,6 +14,7 @@ export default defineConfig([
     plugins: {
       react,
       'react-hooks': reactHooks,
+      'simple-import-sort': simpleImportSort,
     },
     extends: [
       js.configs.recommended,
@@ -39,6 +41,20 @@ export default defineConfig([
     rules: {
       'no-console': 'warn',
       'react/jsx-key': 'warn',
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^react$'],
+            ['^@?\\w'],
+            ['^(@|assets|pages|shared)(/.*|$)'],
+            ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+            ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+            ['^.+\\.(css|scss)$'],
+          ],
+        },
+      ],
+      'simple-import-sort/exports': 'error',
     },
   },
 ]);

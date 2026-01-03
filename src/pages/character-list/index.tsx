@@ -1,11 +1,17 @@
+import { useState } from 'react';
+
+import logoImage from '../../assets/images/logo.png';
 import Layout from '../../shared/components/layout';
 import Loader from '../../shared/components/loader';
-import logoImage from '../../assets/images/logo.png';
-import { useState } from 'react';
+import {
+  MockedSelectLarge,
+  MockedSelectSmall,
+} from '../../shared/components/select/mocked-selects';
+
 import './character-list.css';
 
 function CharacterList() {
-  const [isLoading] = useState(true);
+  const [isLoading] = useState(false);
 
   return (
     <Layout>
@@ -15,6 +21,10 @@ function CharacterList() {
           alt='Rick and Morty main page logo'
           className='character-info__logo'
         />
+        <div style={{ display: 'flex', columnGap: 24 }}>
+          <MockedSelectLarge />
+          <MockedSelectSmall />
+        </div>
         {isLoading && <Loader label='Loading characters...' />}
       </div>
     </Layout>
