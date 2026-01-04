@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import Select from '.';
+
 import StatusDot, { type Status } from '../status-dot';
+
+import Select from '.';
 
 export function MockedSelectLarge() {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
