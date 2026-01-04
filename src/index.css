@@ -48,6 +48,16 @@ button {
   border: none;
 }
 
+input {
+  border: none;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 ul {
   list-style: none;
 }
