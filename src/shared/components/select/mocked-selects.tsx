@@ -23,16 +23,23 @@ export function MockedSelectLarge() {
   );
 }
 
+type OptionWithStatus = {
+  label: Capitalize<Status>;
+  value: Status;
+};
+
 export function MockedSelectSmall() {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
     undefined,
   );
 
-  const options = [
-    { label: 'Alive', value: 'alive' as Status },
-    { label: 'Dead', value: 'dead' as Status },
-    { label: 'Unknown', value: 'unknown' as Status },
-  ].map((option) => ({
+  const sourceOptions: OptionWithStatus[] = [
+    { label: 'Alive', value: 'alive' },
+    { label: 'Dead', value: 'dead' },
+    { label: 'Unknown', value: 'unknown' },
+  ];
+
+  const options = sourceOptions.map((option) => ({
     value: option.value,
     label: option.label,
     labelComponent: <StatusDot status={option.value} />,
@@ -43,7 +50,12 @@ export function MockedSelectSmall() {
       value={selectedValue}
       onChange={setSelectedValue}
       options={options}
-      placeholder={options[0].label}
+      placeholder={
+        <>
+          {options[0].label}
+          {options[0].labelComponent}
+        </>
+      }
       size='small'
     />
   );

@@ -56,7 +56,6 @@ export default function Select<T>({
   }, [isOpen]);
 
   const currentOption = options.find((opt) => opt.value === value);
-  const placeholderOption = options.find((opt) => opt.label === placeholder);
 
   const selectClassName = `select-${size} ${className}`.trim();
   const placeholderClassName = `select__placeholder${disabled ? ' select__placeholder_disabled ' : ''}`;
@@ -90,7 +89,7 @@ export default function Select<T>({
       >
         <p className='select__value'>
           {currentOption?.label ?? placeholder}
-          {currentOption?.labelComponent ?? placeholderOption?.labelComponent}
+          {currentOption?.labelComponent}
         </p>
         <ArrowDownIcon className={arrowClassName} />
       </button>
