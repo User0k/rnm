@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import Input from '.';
+
 import { SearchIcon } from '../../../assets/icons';
+
+import Input from '.';
 
 export function LargeInput() {
   const [value, setValue] = useState('');
