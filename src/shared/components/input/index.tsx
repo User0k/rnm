@@ -39,7 +39,7 @@ export default function Input({
         onChange={(e) => onChange?.(e.target.value)}
         type='text'
       />
-      {value && (
+      {size === 'large' && value && (
         <button
           className='input__close-icon'
           onClick={handleClear}

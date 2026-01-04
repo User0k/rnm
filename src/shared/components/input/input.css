@@ -10,15 +10,29 @@
   color: var(--color-mid-gray);
 
   &:has(input:focus) {
-    outline: auto;
+    outline: 1px solid var(--color-dark-black);
+  }
+
+  & input {
+    font-size: 16px;
+    line-height: 150%;
+    width: 170px;
+    padding-right: 8px;
   }
 }
 
-.input_large input {
-  font-size: 16px;
-  line-height: 150%;
-  width: 170px;
-  padding-right: 8px;
+.input_small {
+  & input {
+    width: 178px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    color: var(--color-dark-black);
+  }
+
+  & input:focus {
+    border-bottom: 1px solid var(--color-dark-black);
+  }
 }
 
 .input__icon {
