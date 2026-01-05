@@ -1,0 +1,62 @@
+.input_large,
+.input_small {
+  position: relative;
+}
+
+.input_large {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  padding: 16px;
+  width: 240px;
+  border: 1px solid var(--color-mid-gray);
+  border-radius: 8px;
+  color: var(--color-mid-gray);
+
+  &:has(input:focus) {
+    outline: 1px solid var(--color-dark-black);
+  }
+
+  & input {
+    font-size: 16px;
+    line-height: 150%;
+    width: 170px;
+    padding-right: 8px;
+  }
+
+  .input__close-icon {
+    right: 10px;
+  }
+}
+
+.input_small {
+  & input {
+    width: 178px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    color: var(--color-dark-black);
+  }
+
+  & input:focus {
+    border-bottom: 1px solid var(--color-dark-black);
+  }
+
+  & .input__close-icon {
+    top: 12px;
+    right: -20px;
+  }
+}
+
+.input__icon {
+  fill: var(--color-mid-gray);
+  line-height: 0;
+}
+
+.input__close-icon {
+  position: absolute;
+
+  & svg {
+    fill: var(--color-dark-black);
+  }
+}

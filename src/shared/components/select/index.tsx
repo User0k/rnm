@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { HTMLAttributes, ReactNode } from 'react';
 
 import { ArrowDownIcon } from '../../../assets/icons';
+import clsx from '../../utils/clsx';
 
 import './select.css';
 
@@ -56,14 +57,13 @@ export default function Select<T>({
   }, [isOpen]);
 
   const currentOption = options.find((opt) => opt.value === value);
-  const placeholderOption = options.find((opt) => opt.label === placeholder);
 
-  const selectClassName = `select-${size} ${className}`.trim();
-  const placeholderClassName = `select__placeholder${disabled ? ' select__placeholder_disabled ' : ''}`;
-  const arrowClassName = `select__arrow${isOpen ? ' select__arrow_open' : ''}`;
-
-  const getOptionClassName = (option: OptionProps<T>) =>
-    `select__option${option.value === value ? ' select__option_selected' : ''}`;
+  const selectClassName = clsx(`select-${size}`, className);
+  const placeholderClassName = clsx(
+    'select__placeholder',
+    disabled && 'select__placeholder_disabled',
+  );
+  const arrowClassName = clsx('select__arrow', isOpen && 'select__arrow_open');
 
   const toggleDropdown = () => {
     if (!disabled) {
@@ -90,7 +90,7 @@ export default function Select<T>({
       >
         <p className='select__value'>
           {currentOption?.label ?? placeholder}
-          {currentOption?.labelComponent ?? placeholderOption?.labelComponent}
+          {currentOption?.labelComponent}
         </p>
         <ArrowDownIcon className={arrowClassName} />
       </button>
@@ -100,7 +100,10 @@ export default function Select<T>({
           {options.map((option, index) => (
             <li
               key={index}
-              className={getOptionClassName(option)}
+              className={clsx(
+                'select__option',
+                option.value === value && 'select__option_selected',
+              )}
               onClick={() => handleOptionClick(option.value)}
             >
               {option.label}

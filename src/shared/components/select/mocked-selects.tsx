@@ -1,6 +1,9 @@
 import { useState } from 'react';
+
+import StatusDot from '../status-dot';
+
+import { LARGE_SELECT_DATA, SMALL_SELECT_DATA } from './mocked-data';
 import Select from '.';
-import StatusDot, { type Status } from '../status-dot';
 
 export function MockedSelectLarge() {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
@@ -11,13 +14,7 @@ export function MockedSelectLarge() {
     <Select
       value={selectedValue}
       onChange={setSelectedValue}
-      options={[
-        { label: 'Human', value: 'human' },
-        { label: 'Alien', value: 'alien' },
-        { label: 'Humanoid', value: 'humanoid' },
-        { label: 'Animal', value: 'animal' },
-        { label: 'Robot', value: 'robot' },
-      ]}
+      options={LARGE_SELECT_DATA}
       placeholder='Species'
     />
   );
@@ -28,11 +25,7 @@ export function MockedSelectSmall() {
     undefined,
   );
 
-  const options = [
-    { label: 'Alive', value: 'alive' as Status },
-    { label: 'Dead', value: 'dead' as Status },
-    { label: 'Unknown', value: 'unknown' as Status },
-  ].map((option) => ({
+  const options = SMALL_SELECT_DATA.map((option) => ({
     value: option.value,
     label: option.label,
     labelComponent: <StatusDot status={option.value} />,
@@ -43,7 +36,12 @@ export function MockedSelectSmall() {
       value={selectedValue}
       onChange={setSelectedValue}
       options={options}
-      placeholder={options[0].label}
+      placeholder={
+        <>
+          {options[0].label}
+          {options[0].labelComponent}
+        </>
+      }
       size='small'
     />
   );

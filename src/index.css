@@ -48,6 +48,16 @@ button {
   border: none;
 }
 
+input {
+  border: none;
+  font-family: inherit;
+}
+
+input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 ul {
   list-style: none;
 }

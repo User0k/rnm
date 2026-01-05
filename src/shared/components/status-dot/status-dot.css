@@ -1,20 +1,20 @@
-.status__alive,
-.status__dead,
-.status__unknown {
+.status_alive,
+.status_dead,
+.status_unknown {
   width: 10px;
   height: 10px;
   margin-left: 2px;
   border-radius: 100%;
 }
 
-.status__alive {
+.status_alive {
   background-color: #12b800;
 }
 
-.status__dead {
+.status_dead {
   background-color: #df0000;
 }
 
-.status__unknown {
+.status_unknown {
   background-color: #ff9900;
 }
