@@ -50,7 +50,7 @@ button {
 
 input {
   border: none;
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: inherit;
 }
 
 input:focus-visible {

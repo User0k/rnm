@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import StatusDot, { type Status } from '../status-dot';
+import StatusDot from '../status-dot';
 
+import { LARGE_SELECT_DATA, SMALL_SELECT_DATA } from './mocked-data';
 import Select from '.';
 
 export function MockedSelectLarge() {
@@ -13,35 +14,18 @@ export function MockedSelectLarge() {
     <Select
       value={selectedValue}
       onChange={setSelectedValue}
-      options={[
-        { label: 'Human', value: 'human' },
-        { label: 'Alien', value: 'alien' },
-        { label: 'Humanoid', value: 'humanoid' },
-        { label: 'Animal', value: 'animal' },
-        { label: 'Robot', value: 'robot' },
-      ]}
+      options={LARGE_SELECT_DATA}
       placeholder='Species'
     />
   );
 }
-
-type OptionWithStatus = {
-  label: Capitalize<Status>;
-  value: Status;
-};
 
 export function MockedSelectSmall() {
   const [selectedValue, setSelectedValue] = useState<string | undefined>(
     undefined,
   );
 
-  const sourceOptions: OptionWithStatus[] = [
-    { label: 'Alive', value: 'alive' },
-    { label: 'Dead', value: 'dead' },
-    { label: 'Unknown', value: 'unknown' },
-  ];
-
-  const options = sourceOptions.map((option) => ({
+  const options = SMALL_SELECT_DATA.map((option) => ({
     value: option.value,
     label: option.label,
     labelComponent: <StatusDot status={option.value} />,

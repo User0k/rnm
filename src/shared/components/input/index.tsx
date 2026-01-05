@@ -1,15 +1,13 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
 
 import { CloseIcon } from '../../../assets/icons';
 import clsx from '../../utils/clsx';
 
 import './input.css';
 
-interface InputProps extends Omit<
-  HTMLAttributes<HTMLInputElement>,
-  'onChange'
-> {
+interface InputProps {
   value: string;
+  className?: string;
   icon?: ReactNode;
   onChange?: (value: string) => void;
   placeholder?: string;
@@ -24,6 +22,9 @@ export default function Input({
   size = 'large',
   value,
 }: InputProps) {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+    onChange?.(e.target.value);
+
   const handleClear = () => {
     if (onChange) {
       onChange('');
@@ -36,10 +37,10 @@ export default function Input({
       <input
         placeholder={placeholder}
         value={value}
-        onChange={(e) => onChange?.(e.target.value)}
+        onChange={handleChange}
         type='text'
       />
-      {size === 'large' && value && (
+      {value && (
         <button
           className='input__close-icon'
           onClick={handleClear}
