@@ -1,0 +1,58 @@
+.character-card {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 508px;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px 2px rgb(0 0 0 / 20%);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__wrapper {
+    display: flex;
+    column-gap: 12px;
+  }
+
+  &__portrait {
+    width: 240px;
+    height: 100%;
+  }
+
+  &__detail {
+    padding: 6px 0;
+  }
+
+  &__label {
+    padding-bottom: 3px;
+  }
+
+  &__desc {
+    font-size: 14px;
+    color: var(--color-mid-gray);
+  }
+
+  &__actions button {
+    padding: 6px;
+  }
+
+  &__actions {
+    display: flex;
+    margin-top: 6px;
+  }
+
+  &__action-edit {
+    display: none;
+    margin-top: -6px;
+  }
+
+  &__actions svg {
+    fill: var(--color-dark-black);
+  }
+}
+
+.character-card:hover .character-card__action-edit {
+  display: block;
+}
