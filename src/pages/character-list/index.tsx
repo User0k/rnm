@@ -8,7 +8,7 @@ import {
 import Layout from '../../shared/components/layout';
 import Loader from '../../shared/components/loader';
 
-import './character-list.css';
+import './character-list.scss';
 
 function CharacterList() {
   const [isLoading] = useState(false);

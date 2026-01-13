@@ -3,7 +3,7 @@ import type { ChangeEvent, ReactNode } from 'react';
 import { CloseIcon } from '../../../assets/icons';
 import clsx from '../../utils/clsx';
 
-import './input.css';
+import './input.scss';
 
 interface InputProps {
   value: string;

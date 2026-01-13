@@ -3,7 +3,7 @@ import {
   default as SpinnerSmall,
 } from '../../../assets/images/spinner_large.png';
 
-import './loader.css';
+import './loader.scss';
 
 interface LoaderProps {
   size?: 'large' | 'small';

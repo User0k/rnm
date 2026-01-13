@@ -4,7 +4,7 @@ header {
   padding: 5px 12px;
 
   & button {
-    padding: 6px 6px;
+    padding: 6px;
     border: 1px solid #393939;
     border-radius: 12px;
   }
@@ -12,8 +12,8 @@ header {
 
 .header__wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
 }
 

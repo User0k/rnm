@@ -1,4 +1,4 @@
-import './status-dot.css';
+import './status-dot.scss';
 
 export type Status = 'alive' | 'dead' | 'unknown';
 

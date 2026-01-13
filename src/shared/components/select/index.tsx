@@ -5,7 +5,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { ArrowDownIcon } from '../../../assets/icons';
 import clsx from '../../utils/clsx';
 
-import './select.css';
+import './select.scss';
 
 interface OptionProps<T> {
   label: ReactNode;
