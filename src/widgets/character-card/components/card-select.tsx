@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import Select from '../../../shared/components/select';
 import StatusDot from '../../../shared/components/status-dot';
 import type { Status } from '../../../shared/types';
@@ -15,9 +13,15 @@ const STATUS_DATA: OptionWithStatus[] = [
   { label: 'Unknown', value: 'Unknown' },
 ];
 
-export default function CardSelect({ status }: { status: Status }) {
-  const [selectedValue, setSelectedValue] = useState(status);
-
+export default function CardSelect({
+  disabled,
+  status,
+  onChange,
+}: {
+  status: Status;
+  disabled?: boolean;
+  onChange: (status: Status) => void;
+}) {
   const options = STATUS_DATA.map((option) => ({
     value: option.value,
     label: option.label,
@@ -28,8 +32,9 @@ export default function CardSelect({ status }: { status: Status }) {
 
   return (
     <Select
-      value={selectedValue}
-      onChange={setSelectedValue}
+      disabled={disabled}
+      value={status}
+      onChange={onChange}
       options={options}
       placeholder={
         <>

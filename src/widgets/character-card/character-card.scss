@@ -7,7 +7,11 @@
   border-radius: 4px;
   box-shadow: 2px 2px 4px 2px rgb(0 0 0 / 20%);
 
-  &:hover {
+  a {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 30px;
+    color: var(--color-dark-black);
     cursor: pointer;
   }
 
@@ -34,22 +38,26 @@
     color: var(--color-mid-gray);
   }
 
-  &__actions button {
-    padding: 6px;
-  }
-
   &__actions {
     display: flex;
     margin-top: 6px;
+
+    button {
+      padding: 6px;
+    }
+
+    svg {
+      fill: var(--color-dark-black);
+    }
   }
 
   &__action-edit {
     display: none;
     margin-top: -6px;
-  }
 
-  &__actions svg {
-    fill: var(--color-dark-black);
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

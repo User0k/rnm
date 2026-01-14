@@ -32,7 +32,7 @@ export default function Input({
   };
 
   return (
-    <div className={clsx(`input_${size}`, className)}>
+    <div className={clsx('input', `input_${size}`, className)}>
       {icon && <div className='input__icon'>{icon}</div>}
       <input
         placeholder={placeholder}

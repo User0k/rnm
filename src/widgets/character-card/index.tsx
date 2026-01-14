@@ -1,14 +1,12 @@
 import { useState } from 'react';
 
 import { CloseIcon, ConfirmIcon, PencilIcon } from '../../assets/icons';
-import rick from '../../assets/images/rick.jpg';
+import { rick } from '../../assets/images';
 import type { Gender, Species, Status } from '../../shared/types';
 
-import CardInput from './components/card-input';
-import CardSelect from './components/card-select';
-import DetailItem from './components/detail-item';
-
+import Input from '../../shared/components/input';
 import './character-card.scss';
+import { CardSelect, DetailItem } from './components';
 
 interface CardProps {
   gender: Gender;
@@ -26,11 +24,12 @@ export default function CharacterCard({
   status,
 }: CardProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const [cardState, setCardState] = useState<
+    Pick<CardProps, 'name' | 'status'>
+  >({ name, status });
 
-  const handleClick = () => {
-    if (!isEditing) {
-      setIsEditing(true);
-    }
+  const handleEditClick = () => {
+    setIsEditing(true);
   };
 
   const handleCancel = () => {
@@ -38,22 +37,41 @@ export default function CharacterCard({
   };
 
   const handleConfirm = () => {
+    if (!cardState.name) {
+      setCardState({ ...cardState, name });
+    }
+
     setIsEditing(false);
   };
 
+  const handleNameChange = (value: string) => {
+    setCardState({ ...cardState, name: value });
+  };
+
+  const handleStatusChange = (status: Status) => {
+    setCardState({ ...cardState, status });
+  };
+
   return (
-    <article
-      className='character-card'
-      onClick={handleClick}
-    >
+    <article className='character-card'>
       <div className='character-card__wrapper'>
         <img
           src={rick}
-          alt='Rick Sanchez image'
+          alt={`${name} image`}
           className='character-card__portrait'
         />
         <div className='character-card__content'>
-          <CardInput name={name} />
+          {isEditing ? (
+            <Input
+              placeholder='Character name'
+              size='small'
+              value={cardState.name}
+              onChange={handleNameChange}
+            />
+          ) : (
+            <a href='#'>{cardState.name}</a>
+          )}
+
           <DetailItem label='Gender'>
             <p className='character-card__desc'>{gender}</p>
           </DetailItem>
@@ -64,18 +82,17 @@ export default function CharacterCard({
             <p className='character-card__desc'>{location}</p>
           </DetailItem>
           <DetailItem label='Status'>
-            <CardSelect status={status} />
+            <CardSelect
+              disabled={!isEditing}
+              status={cardState.status}
+              onChange={handleStatusChange}
+            />
           </DetailItem>
         </div>
       </div>
 
       <div className='character-card__actions'>
-        {!isEditing && (
-          <button className='character-card__action-edit'>
-            <PencilIcon />
-          </button>
-        )}
-        {isEditing && (
+        {isEditing ? (
           <>
             <button onClick={handleCancel}>
               <CloseIcon />
@@ -84,6 +101,13 @@ export default function CharacterCard({
               <ConfirmIcon />
             </button>
           </>
+        ) : (
+          <button
+            className='character-card__action-edit'
+            onClick={handleEditClick}
+          >
+            <PencilIcon />
+          </button>
         )}
       </div>
     </article>

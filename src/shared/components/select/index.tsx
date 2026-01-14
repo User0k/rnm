@@ -27,7 +27,7 @@ interface SelectProps<T> extends Omit<
 
 export default function Select<T>({
   className = '',
-  disabled = false,
+  disabled,
   onChange,
   options = [],
   placeholder = '',
