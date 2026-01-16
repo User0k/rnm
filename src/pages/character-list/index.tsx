@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { logoImage } from '../../assets/images';
-import Layout from '../../shared/components/layout';
-import Loader from '../../shared/components/loader';
-import CharacterCard from '../../widgets/character-card';
+import { logoImage } from '@/assets/images';
+import Layout from '@/shared/components/layout';
+import Loader from '@/shared/components/loader';
+import CharacterCard from '@/widgets/character-card';
 
 import './character-list.scss';
 

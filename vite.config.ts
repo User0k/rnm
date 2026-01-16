@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react';
+import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import stylelint from 'vite-plugin-stylelint';
 import svgr from 'vite-plugin-svgr';
@@ -16,4 +17,9 @@ export default defineConfig({
       emitWarning: true,
     }),
   ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
 });

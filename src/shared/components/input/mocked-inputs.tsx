@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { SearchIcon } from '../../../assets/icons';
+import { SearchIcon } from '@/assets/icons';
 
 import Input from '.';
 

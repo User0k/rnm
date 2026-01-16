@@ -1,8 +1,8 @@
 import type { ChangeEvent, ReactNode } from 'react';
 
-import { CloseIcon } from '../../../assets/icons';
-import clsx from '../../utils/clsx';
+import { CloseIcon } from '@/assets/icons';
 
+import clsx from '@/shared/utils/clsx';
 import './input.scss';
 
 interface InputProps {

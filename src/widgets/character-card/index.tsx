@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { CloseIcon, ConfirmIcon, PencilIcon } from '../../assets/icons';
-import { rick } from '../../assets/images';
-import type { Gender, Species, Status } from '../../shared/types';
+import { CloseIcon, ConfirmIcon, PencilIcon } from '@/assets/icons';
+import { rick } from '@/assets/images';
+import type { Gender, Species, Status } from '@/shared/types';
 
-import Input from '../../shared/components/input';
+import Input from '@/shared/components/input';
 import './character-card.scss';
 import { CardSelect, DetailItem } from './components';
 
@@ -53,7 +53,7 @@ export default function CharacterCard({
   };
 
   return (
-    <article className='character-card'>
+    <form className='character-card'>
       <div className='character-card__wrapper'>
         <img
           src={rick}
@@ -110,6 +110,6 @@ export default function CharacterCard({
           </button>
         )}
       </div>
-    </article>
+    </form>
   );
 }

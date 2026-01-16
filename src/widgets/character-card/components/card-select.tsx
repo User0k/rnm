@@ -1,6 +1,6 @@
-import Select from '../../../shared/components/select';
-import StatusDot from '../../../shared/components/status-dot';
-import type { Status } from '../../../shared/types';
+import Select from '@/shared/components/select';
+import StatusDot from '@/shared/components/status-dot';
+import type { Status } from '@/shared/types';
 
 type OptionWithStatus = {
   label: Status;

@@ -1,7 +1,7 @@
 import {
   default as SpinnerLarge,
   default as SpinnerSmall,
-} from '../../../assets/images/spinner_large.png';
+} from '@/assets/images/spinner_large.png';
 
 import './loader.scss';
 

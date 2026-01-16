@@ -1,4 +1,4 @@
-import { HeaderLogo, SunIcon } from '../../../assets/icons';
+import { HeaderLogo, SunIcon } from '@/assets/icons';
 
 import './header.scss';
 
