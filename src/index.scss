@@ -1,3 +1,5 @@
+@import 'normalize.css';
+
 :root {
   --color-dark-black: #000000;
   --color-black: #212121;
@@ -6,21 +8,19 @@
   --color-mid-gray: #757575;
   --color-light-gray: #cacaca;
 
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 400;
-
-  color: var(--color-black);
-
   font-synthesis: none;
+  color: var(--color-black);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
 a {
@@ -29,28 +29,28 @@ a {
 }
 
 #root {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
+  position: relative;
   display: flex;
   flex-grow: 1;
-  position: relative;
 }
 
 button {
   display: flex;
   align-items: center;
-  background-color: transparent;
   cursor: pointer;
+  background-color: transparent;
   border: none;
 }
 
 input {
-  border: none;
   font-family: inherit;
+  border: none;
 }
 
 input:focus-visible {
@@ -73,7 +73,7 @@ ul {
 }
 
 .typography-h3 {
-  font-family: 'Karla', 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: Karla, Roboto, Helvetica, Arial, sans-serif;
   font-size: 18px;
   line-height: 20px;
   text-align: center;

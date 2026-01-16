@@ -5,7 +5,7 @@ import type { HTMLAttributes, ReactNode } from 'react';
 import { ArrowDownIcon } from '../../../assets/icons';
 import clsx from '../../utils/clsx';
 
-import './select.css';
+import './select.scss';
 
 interface OptionProps<T> {
   label: ReactNode;
@@ -27,7 +27,7 @@ interface SelectProps<T> extends Omit<
 
 export default function Select<T>({
   className = '',
-  disabled = false,
+  disabled,
   onChange,
   options = [],
   placeholder = '',

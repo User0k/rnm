@@ -1,7 +1,7 @@
-import './status-dot.css';
+import type { Status } from '../../types';
 
-export type Status = 'alive' | 'dead' | 'unknown';
+import './status-dot.scss';
 
 export default function StatusDot({ status }: { status: Status }) {
-  return <span className={`status_${status}`}></span>;
+  return <span className={`status_${status.toLowerCase()}`}></span>;
 }

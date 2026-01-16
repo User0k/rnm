@@ -1,6 +1,6 @@
 import { HeaderLogo, SunIcon } from '../../../assets/icons';
 
-import './header.css';
+import './header.scss';
 
 function Header() {
   return (

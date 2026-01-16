@@ -3,7 +3,7 @@ import type { ChangeEvent, ReactNode } from 'react';
 import { CloseIcon } from '../../../assets/icons';
 import clsx from '../../utils/clsx';
 
-import './input.css';
+import './input.scss';
 
 interface InputProps {
   value: string;
@@ -32,7 +32,7 @@ export default function Input({
   };
 
   return (
-    <div className={clsx(`input_${size}`, className)}>
+    <div className={clsx('input', `input_${size}`, className)}>
       {icon && <div className='input__icon'>{icon}</div>}
       <input
         placeholder={placeholder}

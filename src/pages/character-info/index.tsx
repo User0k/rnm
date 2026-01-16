@@ -6,7 +6,7 @@ import { ArrowBackIcon } from '../../assets/icons';
 import Layout from '../../shared/components/layout';
 import Loader from '../../shared/components/loader';
 
-import './character-info.css';
+import './character-info.scss';
 
 function CharacterInfo() {
   const [isLoading] = useState(true);

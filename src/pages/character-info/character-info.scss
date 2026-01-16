@@ -5,8 +5,8 @@
 
 .character-info__button-back {
   column-gap: 16px;
-  text-transform: uppercase;
   color: var(--color-dark-black);
+  text-transform: uppercase;
   border: none;
 
   & svg {
@@ -15,8 +15,8 @@
 }
 
 .character-info__button-wrapper {
-  justify-self: anchor-center;
   position: absolute;
-  width: 100%;
   top: 44px;
+  justify-self: anchor-center;
+  width: 100%;
 }
