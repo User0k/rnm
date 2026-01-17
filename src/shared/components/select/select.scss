@@ -27,9 +27,11 @@
 .select__dropdown {
   position: absolute;
   z-index: 9;
+  background-color: var(--color-white);
 }
 
 .select__arrow {
+  fill: var(--color-mid-gray);
   transition: transform 0.4s;
 }
 
@@ -84,6 +86,10 @@
 .select__placeholder_disabled {
   cursor: default;
   border-color: transparent;
+
+  svg {
+    fill: none;
+  }
 }
 
 .select__arrow_open {

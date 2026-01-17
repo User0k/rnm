@@ -5,10 +5,10 @@ interface DetailItemProps {
   children: ReactNode;
 }
 
-export default function DetailItem({ label, children }: DetailItemProps) {
+export default function FormItem({ label, children }: DetailItemProps) {
   return (
     <div className='character-card__detail'>
-      <p className='character-card__label'>{label}</p>
+      <label>{label}</label>
       {children}
     </div>
   );
