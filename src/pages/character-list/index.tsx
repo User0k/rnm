@@ -4,6 +4,7 @@ import { logoImage } from '@/assets/images';
 import Layout from '@/shared/components/layout';
 import Loader from '@/shared/components/loader';
 import CharacterCard from '@/widgets/character-card';
+import FilterPanel from '@/widgets/filter-panel';
 
 import './character-list.scss';
 
@@ -18,7 +19,8 @@ function CharacterList() {
           alt='Rick and Morty main page logo'
           className='character-info__logo'
         />
-        <div style={{ display: 'flex', columnGap: 24 }}>
+        <div className='character-info__content'>
+          <FilterPanel />
           <CharacterCard
             gender='Male'
             location='Earth'

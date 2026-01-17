@@ -1,17 +1,7 @@
 import Select from '@/shared/components/select';
 import StatusDot from '@/shared/components/status-dot';
+import { STATUS_SELECT_DATA } from '@/shared/constants/select-data';
 import type { Status } from '@/shared/types';
-
-type OptionWithStatus = {
-  label: Status;
-  value: Status;
-};
-
-const STATUS_DATA: OptionWithStatus[] = [
-  { label: 'Alive', value: 'Alive' },
-  { label: 'Dead', value: 'Dead' },
-  { label: 'Unknown', value: 'Unknown' },
-];
 
 export default function CardSelect({
   disabled,
@@ -22,7 +12,7 @@ export default function CardSelect({
   disabled?: boolean;
   onChange: (status: Status) => void;
 }) {
-  const options = STATUS_DATA.map((option) => ({
+  const options = STATUS_SELECT_DATA.map((option) => ({
     value: option.value,
     label: option.label,
     labelComponent: <StatusDot status={option.value} />,

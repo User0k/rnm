@@ -85,6 +85,7 @@ export default function Select<T>({
       {...props}
     >
       <button
+        type='button'
         className={placeholderClassName}
         onClick={toggleDropdown}
       >
