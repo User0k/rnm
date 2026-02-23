@@ -5,13 +5,13 @@ import Input from '@/shared/components/input';
 import type { Status } from '@/shared/types';
 
 import { CardActions, CardSelect, FormItem } from './components';
-import type { CardProps } from './types';
+import type { CharacterCardProps } from './types';
 
 import './character-card.scss';
 
-export default function CharacterCard(initialState: CardProps) {
+export default function CharacterCard(props: CharacterCardProps) {
   const [isEditing, setIsEditing] = useState(false);
-  const [cardState, setCardState] = useState(initialState);
+  const [cardState, setCardState] = useState(props);
 
   const handleNameChange = (value: string) => {
     setCardState({ ...cardState, name: value });
@@ -30,7 +30,7 @@ export default function CharacterCard(initialState: CardProps) {
       <div className='character-card__wrapper'>
         <img
           src={rick}
-          alt={`${initialState.name} image`}
+          alt={`${props.name} image`}
           className='character-card__portrait'
         />
         <div className='character-card__content'>
@@ -46,14 +46,14 @@ export default function CharacterCard(initialState: CardProps) {
 
           <FormItem label='Gender'>
             <Input
-              value={initialState.gender}
+              value={props.gender}
               size='small'
               disabled
             />
           </FormItem>
           <FormItem label='Species'>
             <Input
-              value={initialState.species}
+              value={props.species}
               size='small'
               disabled
             />
@@ -78,7 +78,7 @@ export default function CharacterCard(initialState: CardProps) {
 
       <CardActions
         cardState={cardState}
-        initialState={initialState}
+        originalData={props}
         isEditing={isEditing}
         setCardState={setCardState}
         setIsEditing={setIsEditing}

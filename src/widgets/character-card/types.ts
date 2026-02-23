@@ -1,6 +1,6 @@
 import type { Gender, Species, Status } from '@/shared/types';
 
-export interface CardProps {
+export interface CharacterCardProps {
   gender: Gender;
   location: string;
   name: string;

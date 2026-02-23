@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
 import { SearchIcon } from '@/assets/icons';
-import Input from '@/shared/components/input';
-import Select from '@/shared/components/select';
+import { Input, Select } from '@/shared/components';
 import {
   GENDER_SELECT_DATA,
   SPECIES_SELECT_DATA,
@@ -12,14 +11,35 @@ import type { Gender, Species, Status } from '@/shared/types';
 
 import './filter-panel.scss';
 
-export default function FilterPanel() {
-  const [name, setName] = useState('');
-  const [species, setSpecies] = useState<Species | undefined>(undefined);
-  const [gender, setGender] = useState<Gender | undefined>(undefined);
-  const [status, setStatus] = useState<Status | undefined>(undefined);
+interface FilterState {
+  name: string;
+  species?: Species;
+  gender?: Gender;
+  status?: Status;
+}
 
-  const onChange = (value: string) => {
-    setName(value);
+export default function FilterPanel() {
+  const [filters, setFilters] = useState<FilterState>({
+    name: '',
+    species: undefined,
+    gender: undefined,
+    status: undefined,
+  });
+
+  const handleNameChange = (value: string) => {
+    setFilters((prev) => ({ ...prev, name: value }));
+  };
+
+  const handleSpeciesChange = (value: Species | undefined) => {
+    setFilters((prev) => ({ ...prev, species: value }));
+  };
+
+  const handleGenderChange = (value: Gender | undefined) => {
+    setFilters((prev) => ({ ...prev, gender: value }));
+  };
+
+  const handleStatusChange = (value: Status | undefined) => {
+    setFilters((prev) => ({ ...prev, status: value }));
   };
 
   return (
@@ -27,27 +47,27 @@ export default function FilterPanel() {
       <Input
         icon={<SearchIcon />}
         placeholder='Filter by name...'
-        value={name}
+        value={filters.name}
         variant='outlined'
-        onChange={onChange}
+        onChange={handleNameChange}
       />
       <Select
         options={SPECIES_SELECT_DATA}
         placeholder='Species'
-        value={species}
-        onChange={setSpecies}
+        value={filters.species}
+        onChange={handleSpeciesChange}
       />
       <Select
         options={GENDER_SELECT_DATA}
         placeholder='Gender'
-        value={gender}
-        onChange={setGender}
+        value={filters.gender}
+        onChange={handleGenderChange}
       />
       <Select
         options={STATUS_SELECT_DATA}
         placeholder='Status'
-        value={status}
-        onChange={setStatus}
+        value={filters.status}
+        onChange={handleStatusChange}
       />
     </section>
   );

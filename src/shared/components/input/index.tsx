@@ -35,15 +35,19 @@ export default function Input({
     }
   };
 
+  const sizeClasses = { small: 'input_small', large: 'input_large' };
+  const variantClasses = {
+    outlined: 'input_outlined',
+    underlined: 'input_underlined',
+  };
+
   return (
     <div
       className={clsx(
         'input',
+        sizeClasses[size],
+        variantClasses[variant],
         {
-          input_small: size === 'small',
-          input_large: size === 'large',
-          input_outlined: variant === 'outlined',
-          input_underlined: variant === 'underlined',
           input_disabled: disabled,
         },
         className,

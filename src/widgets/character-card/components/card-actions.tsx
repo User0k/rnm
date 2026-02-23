@@ -2,19 +2,19 @@ import type { Dispatch, SetStateAction } from 'react';
 
 import { CloseIcon, ConfirmIcon, PencilIcon } from '@/assets/icons';
 
-import type { CardProps } from '../types';
+import type { CharacterCardProps } from '../types';
 
 interface CardActionsProps {
-  cardState: CardProps;
-  initialState: CardProps;
+  cardState: CharacterCardProps;
+  originalData: CharacterCardProps;
   isEditing: boolean;
   setIsEditing: Dispatch<SetStateAction<boolean>>;
-  setCardState: Dispatch<SetStateAction<CardProps>>;
+  setCardState: Dispatch<SetStateAction<CharacterCardProps>>;
 }
 
 export default function CardActions({
   cardState,
-  initialState,
+  originalData,
   isEditing,
   setIsEditing,
   setCardState,
@@ -25,12 +25,12 @@ export default function CardActions({
 
   const handleCancel = () => {
     setIsEditing(false);
-    setCardState(initialState);
+    setCardState(originalData);
   };
 
   const handleConfirm = () => {
     if (!cardState.name) {
-      setCardState({ ...cardState, name: initialState.name });
+      setCardState({ ...cardState, name: originalData.name });
     }
 
     setIsEditing(false);
