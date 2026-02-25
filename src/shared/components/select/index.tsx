@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 
 import type { HTMLAttributes, ReactNode } from 'react';
 
-import { ArrowDownIcon } from '../../../assets/icons';
-import clsx from '../../utils/clsx';
+import { ArrowDownIcon } from '@/assets/icons';
+import clsx from '@/shared/utils/clsx';
 
 import './select.scss';
 
@@ -85,6 +85,7 @@ export default function Select<T>({
       {...props}
     >
       <button
+        type='button'
         className={placeholderClassName}
         onClick={toggleDropdown}
       >

@@ -26,16 +26,16 @@
   }
 
   &__detail {
-    padding: 6px 0;
-  }
+    padding: 4px 0;
 
-  &__label {
-    padding-bottom: 3px;
-  }
+    input {
+      color: var(--color-mid-gray);
+    }
 
-  &__desc {
-    font-size: 14px;
-    color: var(--color-mid-gray);
+    label {
+      display: block;
+      padding-bottom: 3px;
+    }
   }
 
   &__actions {
@@ -58,6 +58,10 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .select-small {
+    margin-left: -4px;
   }
 }
 

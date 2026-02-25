@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import { useNavigate } from 'react-router';
 
-import { ArrowBackIcon } from '../../assets/icons';
-import Layout from '../../shared/components/layout';
-import Loader from '../../shared/components/loader';
+import { ArrowBackIcon } from '@/assets/icons';
+import Layout from '@/shared/components/layout';
+import Loader from '@/shared/components/loader';
 
 import './character-info.scss';
 

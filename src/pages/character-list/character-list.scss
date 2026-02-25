@@ -1,8 +1,14 @@
 .character-info {
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .character-info__logo {
   width: 600px;
   height: 200px;
+}
+
+.character-info__content {
+  width: 100%;
 }

@@ -1,4 +1,5 @@
+import CardActions from './card-actions';
 import CardSelect from './card-select';
-import DetailItem from './detail-item';
+import FormItem from './form-item';
 
-export { CardSelect, DetailItem };
+export { CardActions, CardSelect, FormItem };

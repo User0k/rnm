@@ -7,17 +7,16 @@
   &__close-icon {
     position: absolute;
 
-    & svg {
+    svg {
       fill: var(--color-dark-black);
     }
   }
 
   &__icon {
-    line-height: 0;
     fill: var(--color-mid-gray);
   }
 
-  &_large {
+  &_outlined {
     display: flex;
     column-gap: 12px;
     align-items: center;
@@ -31,11 +30,10 @@
       outline: 1px solid var(--color-dark-black);
     }
 
-    & input {
+    input {
       width: 170px;
       padding-right: 8px;
       font-size: 16px;
-      line-height: 150%;
     }
 
     .input__close-icon {
@@ -43,22 +41,49 @@
     }
   }
 
-  &_small {
-    & input {
+  &_underlined {
+    input {
       width: 178px;
       font-size: 20px;
       font-weight: 500;
       line-height: 30px;
       color: var(--color-dark-black);
+      background: linear-gradient(
+          var(--color-dark-black),
+          var(--color-dark-black)
+        )
+        bottom / 100% 1px no-repeat;
     }
 
-    & input:focus {
-      border-bottom: 1px solid var(--color-dark-black);
-    }
-
-    & .input__close-icon {
+    .input__close-icon {
       top: 12px;
       right: -12px;
+    }
+  }
+
+  &_small {
+    width: 112px;
+
+    input {
+      width: 112px;
+      font-size: 14px;
+      line-height: 22px;
+    }
+
+    .input__close-icon {
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  &_disabled {
+    input {
+      cursor: default;
+      background: none;
+    }
+
+    .input__close-icon {
+      display: none;
     }
   }
 }
