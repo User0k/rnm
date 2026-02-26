@@ -1,11 +1,9 @@
 import { useState } from 'react';
 
-import { rick } from '@/assets/images';
 import Input from '@/shared/components/input';
-import type { Status } from '@/shared/types';
+import type { CharacterCardProps, Status } from '@/shared/types';
 
 import { CardActions, CardSelect, FormItem } from './components';
-import type { CharacterCardProps } from './types';
 
 import './character-card.scss';
 
@@ -29,7 +27,7 @@ export default function CharacterCard(props: CharacterCardProps) {
     <form className='character-card'>
       <div className='character-card__wrapper'>
         <img
-          src={rick}
+          src={props.image}
           alt={`${props.name} image`}
           className='character-card__portrait'
         />
