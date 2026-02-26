@@ -11,18 +11,18 @@ import './filter-panel.scss';
 
 interface FilterPanelProps {
   filters: FilterState;
-  onGenderChange: (value: Gender | undefined) => void;
-  onNameChange: (value: string) => void;
-  onSpeciesChange: (value: Species | undefined) => void;
-  onStatusChange: (value: Status | undefined) => void;
+  handleGenderChange: (value: Gender | undefined) => void;
+  handleNameChange: (value: string) => void;
+  handleSpeciesChange: (value: Species | undefined) => void;
+  handleStatusChange: (value: Status | undefined) => void;
 }
 
 export default function FilterPanel({
   filters,
-  onGenderChange,
-  onNameChange,
-  onSpeciesChange,
-  onStatusChange,
+  handleGenderChange,
+  handleNameChange,
+  handleSpeciesChange,
+  handleStatusChange,
 }: FilterPanelProps) {
   return (
     <section className='filters'>
@@ -31,25 +31,25 @@ export default function FilterPanel({
         placeholder='Filter by name...'
         value={filters.name}
         variant='outlined'
-        onChange={onNameChange}
+        onChange={handleNameChange}
       />
       <Select
         options={SPECIES_SELECT_DATA}
         placeholder='Species'
         value={filters.species}
-        onChange={onSpeciesChange}
+        onChange={handleSpeciesChange}
       />
       <Select
         options={GENDER_SELECT_DATA}
         placeholder='Gender'
         value={filters.gender}
-        onChange={onGenderChange}
+        onChange={handleGenderChange}
       />
       <Select
         options={STATUS_SELECT_DATA}
         placeholder='Status'
         value={filters.status}
-        onChange={onStatusChange}
+        onChange={handleStatusChange}
       />
     </section>
   );

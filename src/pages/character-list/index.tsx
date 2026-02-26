@@ -29,10 +29,10 @@ function CharacterList() {
         <div className='character-info__content'>
           <FilterPanel
             filters={filters}
-            onGenderChange={handleGenderChange}
-            onNameChange={handleNameChange}
-            onSpeciesChange={handleSpeciesChange}
-            onStatusChange={handleStatusChange}
+            handleGenderChange={handleGenderChange}
+            handleNameChange={handleNameChange}
+            handleSpeciesChange={handleSpeciesChange}
+            handleStatusChange={handleStatusChange}
           />
           <Toaster
             position='bottom-left'
