@@ -1,9 +1,10 @@
 import { useState } from 'react';
 
 import Input from '@/shared/components/input';
-import type { CharacterCardProps, Status } from '@/shared/types';
+import type { Status } from '@/shared/types';
 
 import { CardActions, CardSelect, FormItem } from './components';
+import type { CharacterCardProps } from './types';
 
 import './character-card.scss';
 

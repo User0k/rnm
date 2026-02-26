@@ -1,13 +1,2 @@
-export type Status = 'Alive' | 'Dead' | 'Unknown';
-
-export type Gender = 'Female' | 'Male' | 'Genderless' | 'Unknown';
-
-export type Species =
-  | 'Human'
-  | 'Alien'
-  | 'Humanoid'
-  | 'Animal'
-  | 'Robot'
-  | 'Cronenberg'
-  | 'Disease'
-  | 'Unknown';
+export type { Character, Gender, Species, Status } from './character';
+export type { FilterState } from './filter';

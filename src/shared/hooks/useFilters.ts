@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -12,6 +12,8 @@ import type {
   Status,
 } from '@/shared/types';
 
+import { useDebounce } from '.';
+
 export function useFilters() {
   const [filters, setFilters] = useState<FilterState>({
     name: '',
@@ -23,8 +25,13 @@ export function useFilters() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const debouncedName = useDebounce(filters.name, 200);
+  const toastShownRef = useRef(false);
+
   const fetchCharacters = async () => {
     setIsLoading(true);
+    toastShownRef.current = false;
+
     const params: Record<string, string> = {};
 
     Object.entries(filters).forEach(([key, value]) => {
@@ -39,10 +46,14 @@ export function useFilters() {
     } catch (error) {
       setCharacters([]);
 
-      if (axios.isAxiosError(error)) {
-        toast.error(error.message || 'Не удалось загрузить персонажей(');
-      } else {
-        toast.error('Упс! Что-то пошло не так!');
+      if (!toastShownRef.current) {
+        toastShownRef.current = true;
+
+        if (axios.isAxiosError(error)) {
+          toast.error('Проверьте сетевое соединение!');
+        } else {
+          toast.error('Не удалось загрузить персонажей(');
+        }
       }
     } finally {
       setIsLoading(false);
@@ -51,8 +62,7 @@ export function useFilters() {
 
   useEffect(() => {
     fetchCharacters();
-    console.log(characters);
-  }, [filters]);
+  }, [debouncedName, filters.gender, filters.species, filters.status]);
 
   const handleNameChange = (value: string) => {
     setFilters((prev) => ({ ...prev, name: value }));

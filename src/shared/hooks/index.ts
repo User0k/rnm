@@ -1,3 +1,4 @@
+import { useDebounce } from './useDebounce';
 import { useFilters } from './useFilters';
 
-export { useFilters };
+export { useDebounce, useFilters };

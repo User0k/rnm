@@ -8,22 +8,26 @@ export default function CardSelect({
   status,
   onChange,
 }: {
-  status: Status;
+  status: Status | 'unknown';
   disabled?: boolean;
   onChange: (status: Status) => void;
 }) {
+  const normalizedStatus: Status = status === 'unknown' ? 'Unknown' : status;
+
   const options = STATUS_SELECT_DATA.map((option) => ({
     value: option.value,
     label: option.label,
     labelComponent: <StatusDot status={option.value} />,
   }));
 
-  const initialOption = options.find((option) => option.label === status);
+  const initialOption = options.find(
+    (option) => option.label === normalizedStatus,
+  );
 
   return (
     <Select
       disabled={disabled}
-      value={status}
+      value={normalizedStatus}
       onChange={onChange}
       options={options}
       placeholder={

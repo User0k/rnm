@@ -1,7 +1,8 @@
 import type { Dispatch, SetStateAction } from 'react';
 
 import { CloseIcon, ConfirmIcon, PencilIcon } from '@/assets/icons';
-import type { CharacterCardProps } from '@/shared/types';
+
+import type { CharacterCardProps } from '../types';
 
 interface CardActionsProps {
   cardState: CharacterCardProps;

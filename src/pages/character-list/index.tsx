@@ -1,3 +1,5 @@
+import { Toaster } from 'react-hot-toast';
+
 import { logoImage } from '@/assets/images';
 import { Layout, Loader } from '@/shared/components';
 import { useFilters } from '@/shared/hooks';
@@ -31,6 +33,10 @@ function CharacterList() {
             onNameChange={handleNameChange}
             onSpeciesChange={handleSpeciesChange}
             onStatusChange={handleStatusChange}
+          />
+          <Toaster
+            position='bottom-left'
+            toastOptions={{ duration: 2000 }}
           />
           {isLoading ? (
             <Loader label='Загружаю персонажей...' />

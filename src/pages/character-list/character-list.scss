@@ -12,3 +12,9 @@
 .character-info__content {
   width: 100%;
 }
+
+.character-info__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
