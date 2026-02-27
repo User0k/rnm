@@ -1,13 +1,22 @@
-import { useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 import { logoImage } from '@/assets/images';
 import { Layout, Loader } from '@/shared/components';
+import { useFilters } from '@/shared/hooks';
 import { CharacterCard, FilterPanel } from '@/widgets';
 
 import './character-list.scss';
 
 function CharacterList() {
-  const [isLoading] = useState(false);
+  const {
+    characters,
+    isLoading,
+    filters,
+    handleGenderChange,
+    handleNameChange,
+    handleSpeciesChange,
+    handleStatusChange,
+  } = useFilters();
 
   return (
     <Layout>
@@ -18,16 +27,31 @@ function CharacterList() {
           className='character-info__logo'
         />
         <div className='character-info__content'>
-          <FilterPanel />
-          <CharacterCard
-            gender='Male'
-            location='Earth'
-            name='Rick Sanchez'
-            species='Human'
-            status='Alive'
+          <FilterPanel
+            filters={filters}
+            handleGenderChange={handleGenderChange}
+            handleNameChange={handleNameChange}
+            handleSpeciesChange={handleSpeciesChange}
+            handleStatusChange={handleStatusChange}
           />
+          <Toaster
+            position='bottom-left'
+            toastOptions={{ duration: 2000 }}
+          />
+          {isLoading ? (
+            <Loader label='Loading characters...' />
+          ) : (
+            <div className='character-info__list'>
+              {characters.map((character) => (
+                <CharacterCard
+                  {...character}
+                  key={character.id}
+                  location={character.location.name}
+                />
+              ))}
+            </div>
+          )}
         </div>
-        {isLoading && <Loader label='Loading characters...' />}
       </div>
     </Layout>
   );

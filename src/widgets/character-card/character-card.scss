@@ -9,9 +9,13 @@
 
   a {
     display: inline-block;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 20px;
     line-height: 30px;
     color: var(--color-dark-black);
+    white-space: nowrap;
     cursor: pointer;
   }
 
@@ -23,6 +27,12 @@
   &__portrait {
     width: 240px;
     height: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
   }
 
   &__detail {
