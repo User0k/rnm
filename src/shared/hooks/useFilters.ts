@@ -50,9 +50,9 @@ export function useFilters() {
         toastShownRef.current = true;
 
         if (axios.isAxiosError(error)) {
-          toast.error('Проверьте сетевое соединение!');
+          toast.error('Check the network connection!');
         } else {
-          toast.error('Не удалось загрузить персонажей(');
+          toast.error('Unable to load characters(');
         }
       }
     } finally {

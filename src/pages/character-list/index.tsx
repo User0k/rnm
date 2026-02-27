@@ -39,7 +39,7 @@ function CharacterList() {
             toastOptions={{ duration: 2000 }}
           />
           {isLoading ? (
-            <Loader label='Загружаю персонажей...' />
+            <Loader label='Loading characters...' />
           ) : (
             <div className='character-info__list'>
               {characters.map((character) => (
