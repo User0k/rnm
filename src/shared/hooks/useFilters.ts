@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-
-import axios from 'axios';
 import toast from 'react-hot-toast';
 
-import { api } from '@/shared/api';
 import type {
   Character,
   FilterState,
@@ -11,8 +8,8 @@ import type {
   Species,
   Status,
 } from '@/shared/types';
-
 import { useDebounce } from '.';
+import { getCharacters } from '../api/getCharacters';
 
 export function useFilters() {
   const [filters, setFilters] = useState<FilterState>({
@@ -27,41 +24,46 @@ export function useFilters() {
 
   const debouncedName = useDebounce(filters.name, 200);
   const toastShownRef = useRef(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   const fetchCharacters = async () => {
+    abortControllerRef.current?.abort();
+
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+
     setIsLoading(true);
     toastShownRef.current = false;
 
-    const params: Record<string, string> = {};
+    const params = {
+      name: filters.name || undefined,
+      species: filters.species,
+      gender: filters.gender,
+      status: filters.status,
+    };
 
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value) {
-        params[key] = value.toLowerCase();
-      }
-    });
+    const result = await getCharacters(params, controller.signal);
 
-    try {
-      const response = await api.get('character', { params });
-      setCharacters(response.data.results || []);
-    } catch (error) {
+    if (abortControllerRef.current !== controller) return;
+
+    if (result.success) {
+      setCharacters(result.data);
+    } else if (!result.cancelled) {
       setCharacters([]);
 
       if (!toastShownRef.current) {
         toastShownRef.current = true;
-
-        if (axios.isAxiosError(error)) {
-          toast.error('Check the network connection!');
-        } else {
-          toast.error('Unable to load characters(');
-        }
+        toast.error(result.error.message);
       }
-    } finally {
-      setIsLoading(false);
     }
+
+    setIsLoading(false);
+    abortControllerRef.current = null;
   };
 
   useEffect(() => {
     fetchCharacters();
+    return () => abortControllerRef.current?.abort();
   }, [debouncedName, filters.gender, filters.species, filters.status]);
 
   const handleNameChange = (value: string) => {
