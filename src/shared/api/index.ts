@@ -1,5 +1,4 @@
-import axios from 'axios';
+import { api } from './api';
+import { getCharacters } from './getCharacters';
 
-export const api = axios.create({
-  baseURL: 'https://rickandmortyapi.com/api/',
-});
+export { api, getCharacters };
