@@ -1,8 +1,9 @@
+import { useEffect, useRef } from 'react';
 import { Toaster } from 'react-hot-toast';
 
 import { logoImage } from '@/assets/images';
 import { Layout, Loader } from '@/shared/components';
-import { useFilters } from '@/shared/hooks';
+import { useFilters, useIntersectionObserver } from '@/shared/hooks';
 import { CharacterCard, FilterPanel } from '@/widgets';
 
 import './character-list.scss';
@@ -11,12 +12,27 @@ function CharacterList() {
   const {
     characters,
     isLoading,
+    isLoadingMore,
+    hasMore,
     filters,
     handleGenderChange,
     handleNameChange,
     handleSpeciesChange,
     handleStatusChange,
+    loadMore,
   } = useFilters();
+
+  const loadMoreRef = useRef<HTMLDivElement>(null);
+  const isIntersecting = useIntersectionObserver(loadMoreRef, {
+    threshold: 0.1,
+    rootMargin: '100px',
+  });
+
+  useEffect(() => {
+    if (isIntersecting && hasMore && !isLoadingMore && !isLoading) {
+      loadMore();
+    }
+  }, [isIntersecting, hasMore, isLoadingMore, isLoading, loadMore]);
 
   return (
     <Layout>
@@ -41,15 +57,20 @@ function CharacterList() {
           {isLoading ? (
             <Loader label='Loading characters...' />
           ) : (
-            <div className='character-info__list'>
-              {characters.map((character) => (
-                <CharacterCard
-                  {...character}
-                  key={character.id}
-                  location={character.location.name}
-                />
-              ))}
-            </div>
+            <>
+              <div className='character-info__list'>
+                {characters.map((character) => (
+                  <CharacterCard
+                    {...character}
+                    key={character.id}
+                    location={character.location.name}
+                  />
+                ))}
+              </div>
+              <div ref={loadMoreRef}>
+                {isLoadingMore && <Loader size='small' />}
+              </div>
+            </>
           )}
         </div>
       </div>
