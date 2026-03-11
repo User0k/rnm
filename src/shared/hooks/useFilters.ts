@@ -21,25 +21,35 @@ export function useFilters() {
 
   const [characters, setCharacters] = useState<Character[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
   const debouncedName = useDebounce(filters.name, 200);
   const toastShownRef = useRef(false);
   const abortControllerRef = useRef<AbortController | null>(null);
 
-  const fetchCharacters = async () => {
+  const fetchCharacters = async (page: number = 1) => {
     abortControllerRef.current?.abort();
 
     const controller = new AbortController();
     abortControllerRef.current = controller;
 
-    setIsLoading(true);
-    toastShownRef.current = false;
+    const isInitialLoad = page === 1;
+
+    if (isInitialLoad) {
+      setIsLoading(true);
+      toastShownRef.current = false;
+    } else {
+      setIsLoadingMore(true);
+    }
 
     const params = {
       name: filters.name || undefined,
       species: filters.species,
       gender: filters.gender,
       status: filters.status,
+      page,
     };
 
     const result = await getCharacters(params, controller.signal);
@@ -47,22 +57,37 @@ export function useFilters() {
     if (abortControllerRef.current !== controller) return;
 
     if (result.success) {
-      setCharacters(result.data);
+      setHasMore(page < result.totalPages);
+      setCurrentPage(page);
+      setCharacters((prev) =>
+        isInitialLoad ? result.data : [...prev, ...result.data],
+      );
     } else if (!result.cancelled) {
-      setCharacters([]);
-
+      if (isInitialLoad) {
+        setCharacters([]);
+      }
       if (!toastShownRef.current) {
         toastShownRef.current = true;
         toast.error(result.error.message);
       }
     }
 
-    setIsLoading(false);
+    if (isInitialLoad) {
+      setIsLoading(false);
+    } else {
+      setIsLoadingMore(false);
+    }
     abortControllerRef.current = null;
   };
 
+  const loadMore = () => {
+    if (!isLoadingMore && hasMore && !isLoading) {
+      fetchCharacters(currentPage + 1);
+    }
+  };
+
   useEffect(() => {
-    fetchCharacters();
+    fetchCharacters(1);
     return () => abortControllerRef.current?.abort();
   }, [debouncedName, filters.gender, filters.species, filters.status]);
 
@@ -90,5 +115,8 @@ export function useFilters() {
     handleSpeciesChange,
     handleStatusChange,
     isLoading,
+    isLoadingMore,
+    hasMore,
+    loadMore,
   };
 }

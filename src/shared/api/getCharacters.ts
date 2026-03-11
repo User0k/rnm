@@ -3,7 +3,7 @@ import { api } from '.';
 import type { Character, FilterState } from '../types';
 
 type FetchCharactersResult =
-  | { success: true; data: Character[] }
+  | { success: true; data: Character[]; totalPages: number }
   | { success: false; cancelled: true }
   | {
       success: false;
@@ -12,24 +12,36 @@ type FetchCharactersResult =
     };
 
 export async function getCharacters(
-  params: Partial<FilterState> = {},
+  params: Partial<FilterState> & { page?: number } = {},
   signal?: AbortSignal,
 ): Promise<FetchCharactersResult> {
+  const { page, ...filters } = params;
   const queryParams: Record<string, string> = {};
 
-  Object.entries(params).forEach(([key, value]) => {
-    if (value) {
-      queryParams[key] = value.toLowerCase();
+  Object.entries(filters).forEach(([key, value]) => {
+    if (value && key !== 'page') {
+      queryParams[key] = value.toString().toLowerCase();
     }
   });
 
+  if (page) {
+    queryParams.page = page.toString();
+  }
+
   try {
-    const response = await api.get<{ results: Character[] }>('/character', {
+    const response = await api.get<{
+      results: Character[];
+      info: { pages: number };
+    }>('/character', {
       params: queryParams,
       signal,
     });
 
-    return { success: true, data: response.data.results || [] };
+    return {
+      success: true,
+      data: response.data.results || [],
+      totalPages: response.data.info.pages,
+    };
   } catch (error) {
     if (axios.isCancel(error)) {
       return { success: false, cancelled: true };
